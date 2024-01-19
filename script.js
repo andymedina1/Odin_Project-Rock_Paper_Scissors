@@ -51,6 +51,22 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = getPlayerSelection();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  let playerCount = 0
+  let computerCount = 0
+  for (let i = 0; i < 5; i++) {
+    let result = playRound(getPlayerSelection(), getComputerChoice())
+    console.log(result)
+    if (result.includes('Win')) {
+      playerCount++
+    } else {
+      computerCount++
+    }
+  }
+
+  if (playerCount > computerCount) {
+    return `Player: ${playerCount} | Computer: ${computerCount} | You win!`
+  } else {
+    return `Player: ${playerCount} | Computer: ${computerCount} | You lose!`
+  }
+}
